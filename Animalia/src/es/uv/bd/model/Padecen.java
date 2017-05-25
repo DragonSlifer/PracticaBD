@@ -68,6 +68,12 @@ public class Padecen {
         return "Padecen{" + "id_campista=" + id_campista + ", id_patologia=" + id_patologia + ", activa=" + activa + ", gravedad=" + gravedad + ", ind_especiales=" + ind_especiales + '}';
     }
     
-    
+    public String getActiva(){
+        if(activa){
+            return "activa";
+        } else {
+            return "inactiva";
+        }
+    }
 
 }
