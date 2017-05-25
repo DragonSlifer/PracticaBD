@@ -17,30 +17,30 @@ public class PatologiasDAO {
     public static final String USERNAME = "AL028";
     public static final String PASSWORD = "OneManArmy";
 
-    private static final String LCLIENTE
-            = "SELECT "
-            + "  FROM "
-            + " ORDER BY ";
+    private static final String LPATOLOGIA
+            = "SELECT id_patologia, nombre, descripcion, indicaciones, tratamiento "
+            + "  FROM patologias "
+            + " ORDER BY 1";
 
     public PatologiasDAO() {
     }
 
     public HashMap<String, Integer> getTListaPatologias() throws InstantiationException, IllegalAccessException, ClassNotFoundException, SQLException {
 
-        HashMap<String, Integer> listaClientes = new HashMap<>();
+        HashMap<String, Integer> listaPatologias = new HashMap<>();
 
         Class.forName(DRIVER).newInstance();
         Connection oracleConn = DriverManager.getConnection(DBURL, USERNAME, PASSWORD);
 
-        PreparedStatement s = oracleConn.prepareStatement(LCLIENTE);
+        PreparedStatement s = oracleConn.prepareStatement(LPATOLOGIA);
         ResultSet rs = s.executeQuery();
 
         while (rs.next()) {
-            listaClientes.put(rs.getString("nombre"), rs.getInt("id_patología"));
+            listaPatologias.put(rs.getString("nombre"), rs.getInt("id_patología"));
         }
         oracleConn.close();
 
-        return listaClientes;
+        return listaPatologias;
 
     }
 
