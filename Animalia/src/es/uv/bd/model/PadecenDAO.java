@@ -38,7 +38,7 @@ public class PadecenDAO {
             " WHERE id_campista = ?, id_enfermedad = ?";
     
     private static final String READALL = 
-            "SELECT pad.id_campista, pad.id_patologia, pat.nombre, pat.descripcion, pat.indicaciones, pat.tratamiento,"
+            "SELECT pad.id_campista, pad.id_patologia, pat.nombre, pat.descripción, pat.indicaciones, pat.tratamiento,"
             + " pad.activa, pad.gravedad, pad.ind_especiales " +
             " FROM padecen pad, patologias pat " +
             " WHERE  pad.id_patologia = pat.id_patologia " +

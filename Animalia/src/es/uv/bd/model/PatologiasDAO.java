@@ -18,7 +18,7 @@ public class PatologiasDAO {
     public static final String PASSWORD = "OneManArmy";
 
     private static final String LPATOLOGIA
-            = "SELECT id_patologia, nombre, descripcion, indicaciones, tratamiento "
+            = "SELECT id_patologia, nombre, descripción, indicaciones, tratamiento "
             + "  FROM patologias "
             + " ORDER BY 1";
 
