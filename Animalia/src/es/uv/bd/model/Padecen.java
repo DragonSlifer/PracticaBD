@@ -11,6 +11,7 @@ public class Padecen {
     private boolean activa;
     private String gravedad;
     private String ind_especiales;
+    private String nombrePatologia;
 
     public Padecen() {
     }
@@ -61,6 +62,14 @@ public class Padecen {
 
     public void setInd_especiales(String ind_especiales) {
         this.ind_especiales = ind_especiales;
+    }
+
+    public String getNombrePatologia() {
+        return nombrePatologia;
+    }
+
+    public void setNombrePatologia(String nombrePatologia) {
+        this.nombrePatologia = nombrePatologia;
     }
 
     @Override
