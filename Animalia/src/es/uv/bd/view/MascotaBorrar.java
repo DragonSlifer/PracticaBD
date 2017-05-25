@@ -13,7 +13,8 @@ import javax.swing.JTable;
 
 /**
  *
- * @author diaz
+ * @author Jorge Martínez
+ * @author Lidia Montero
  */
 public class MascotaBorrar {
     

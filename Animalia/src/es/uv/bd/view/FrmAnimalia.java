@@ -9,7 +9,8 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author diaz
+ * @author Jorge Martínez
+ * @author Lidia Montero
  */
 public class FrmAnimalia extends javax.swing.JFrame {
 

@@ -18,7 +18,8 @@ import javax.swing.*;
 
 /**
  *
- * @author diaz
+ * @author Jorge Martínez
+ * @author Lidia Montero
  */
 public class MascotaEditar extends JFrame {
 

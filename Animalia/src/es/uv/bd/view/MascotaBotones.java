@@ -13,7 +13,8 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author diaz
+ * @author Jorge Martínez
+ * @author Lidia Montero
  */
 public class MascotaBotones extends JPanel {
     private static final JButton[] button = new JButton[3];
