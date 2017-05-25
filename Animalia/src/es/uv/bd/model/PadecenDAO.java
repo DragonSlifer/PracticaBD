@@ -35,7 +35,7 @@ public class PadecenDAO {
     private static final String READ = 
             "SELECT * " +
             " FROM padecen " +
-            " WHERE id_campista = ?";
+            " WHERE id_campista = ?, id_enfermedad = ?";
     
     private static final String READALL = 
             "SELECT pad.id_campista, pad.id_patologia, pat.nombre, pat.descripcion, pat.indicaciones, pat.tratamiento,"
@@ -78,7 +78,7 @@ public class PadecenDAO {
     
     public Padecen leerPadecen(int id_campista, int id_enfermedad) throws ClassNotFoundException, InstantiationException, IllegalAccessException, SQLException, ParseException {
         
-        Padecen padecen = new Padecen();
+        Padecen padecen;
         SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
       
         Class.forName(DRIVER).newInstance();
@@ -87,11 +87,11 @@ public class PadecenDAO {
         // Sentencia de insert
         PreparedStatement read = oracleConn.prepareStatement(READ);
         read.setInt(1, id_campista);
+        read.setInt(2, id_enfermedad);
         ResultSet rs = read.executeQuery();
         
-        if (rs.next()) {
-            ///< Insert
-        }
+        padecen = new Padecen(rs.getInt("id_campista"),rs.getInt("id_patologia"),rs.getBoolean("activa"),rs.getString("gravedad"),rs.getString("ind_especiales"));
+        
         return padecen;
     }
     
