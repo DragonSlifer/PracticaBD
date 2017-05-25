@@ -47,15 +47,15 @@ public class PadecenDaoTest {
             p2 = padecenDAO.leerPadecen(p1.getId_campista(),p1.getId_patologia());
             print("Test 2: " + p2 + " leída.");
             
-            print("Test 3: Cambiar nombre de la mascota");
-            p2.setGravedad("altisima");
+            print("Test 3: Cambiar gravedad");
+            p2.setGravedad("altísima");
             padecenDAO.actualizarPadecen(p2);
             p1 = padecenDAO.leerPadecen(p2.getId_campista(), p2.getId_patologia());
             print("Test 3: " + p1 + " modificada.");
             
-            print("Test 4: Borrar mascota " + p1.getId_campista() + " (" + p1.getId_patologia()+ ")");
+            print("Test 4: Borrar padecen " + p1.getId_campista() + " (" + p1.getId_patologia()+ ")");
             padecenDAO.borrarPadecen(p1.getId_campista(),p1.getId_patologia());
-            print("Test 4: Mascota borrada");
+            print("Test 4: Padecen borrada");
             
             print("Todos los test correctos");
             
