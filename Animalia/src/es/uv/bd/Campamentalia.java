@@ -4,22 +4,22 @@
  */
 package es.uv.bd;
 
-import es.uv.bd.controller.AnimaliaController;
-import es.uv.bd.view.AnimaliaView;
+import es.uv.bd.controller.CampamentaliaController;
+import es.uv.bd.view.CampamentaliaView;
 
 /**
  *
  * @author 
  */
-public class Animalia {
+public class Campamentalia {
 
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
         //VinotecaModel model = new VinotecaModel();
-        AnimaliaView view = new es.uv.bd.view.AnimaliaView();
-        AnimaliaController controller = new AnimaliaController(view);
+        CampamentaliaView view = new es.uv.bd.view.CampamentaliaView();
+        CampamentaliaController controller = new CampamentaliaController(view);
 
         view.setVisible(true);// TODO code application logic here
     }

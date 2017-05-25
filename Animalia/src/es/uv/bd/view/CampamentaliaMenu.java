@@ -8,7 +8,7 @@ import java.awt.event.ActionListener;
  * @author Jorge Martínez
  * @author Lidia Montero
  */
-public class AnimaliaMenu extends MenuBar {
+public class CampamentaliaMenu extends MenuBar {
     private Menu file, tablas, explorer;
 
     private MenuItem [] fileItem = new MenuItem[2];
@@ -25,7 +25,7 @@ public class AnimaliaMenu extends MenuBar {
     
 
     
-    public AnimaliaMenu() throws HeadlessException {
+    public CampamentaliaMenu() throws HeadlessException {
         Font menuFont = new Font("Courier", Font.BOLD, 12);
         
         /******************************************

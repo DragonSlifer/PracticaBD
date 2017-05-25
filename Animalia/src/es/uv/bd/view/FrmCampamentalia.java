@@ -12,12 +12,12 @@ import javax.swing.table.DefaultTableModel;
  * @author Jorge Martínez
  * @author Lidia Montero
  */
-public class FrmAnimalia extends javax.swing.JFrame {
+public class FrmCampamentalia extends javax.swing.JFrame {
 
     /**
      * Creates new form frmAnimalia
      */
-    public FrmAnimalia() {
+    public FrmCampamentalia() {
         initComponents();
     }
 

@@ -16,9 +16,9 @@ import javax.swing.JTable;
  * @author Jorge Martínez
  * @author Lidia Montero
  */
-public class MascotaBorrar {
+public class PadecenBorrar {
     
-    public MascotaBorrar(int idcampista,int idenfermedad, JTable padecenTable) {
+    public PadecenBorrar(int idcampista,int idenfermedad, JTable padecenTable) {
     
         PadecenDAO padecenDao = new PadecenDAO();
         Padecen padecen;

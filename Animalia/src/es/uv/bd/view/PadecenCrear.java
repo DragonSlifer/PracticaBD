@@ -17,7 +17,7 @@ import javax.swing.*;
  * @author Jorge Martínez
  * @author Lidia Montero
  */
-public class MascotaCrear extends JFrame {
+public class PadecenCrear extends JFrame {
     
     private JTextField idCampista = new JTextField();
     private JComboBox idPatologia = new JComboBox();
@@ -29,7 +29,7 @@ public class MascotaCrear extends JFrame {
     private HashMap<String, Integer> listaPatologias = new HashMap();
     private Object [] claves;
         
-    public MascotaCrear(JTable mascotaTable) {
+    public PadecenCrear(JTable mascotaTable) {
             
         super("Nuevo Padecen");
         

@@ -4,9 +4,9 @@
  */
 package es.uv.bd.controller;
 
-import es.uv.bd.view.AnimaliaView;
-import es.uv.bd.view.FrmAnimalia;
-import es.uv.bd.view.MascotaView;
+import es.uv.bd.view.CampamentaliaView;
+import es.uv.bd.view.FrmCampamentalia;
+import es.uv.bd.view.PadecenView;
 import java.awt.Component;
 import java.awt.Frame;
 import java.awt.event.ActionEvent;
@@ -16,10 +16,10 @@ import java.awt.event.ActionListener;
  *
  * @author 
  */
-public class AnimaliaController {
+public class CampamentaliaController {
     private Component c;
     
-    public AnimaliaController(AnimaliaView view) {
+    public CampamentaliaController(CampamentaliaView view) {
         view.setMenuActionListener(new MenuActionListener());
     }
     
@@ -36,11 +36,11 @@ public class AnimaliaController {
                     System.exit(0);
                     break;
                 case "menuPadecimientos":
-                    Frame mascotaView = new MascotaView();
+                    Frame mascotaView = new PadecenView();
                     mascotaView.setVisible(true);
                     break;
                 case "menuExplorar":
-                    Frame frmAnimalia = new FrmAnimalia();
+                    Frame frmAnimalia = new FrmCampamentalia();
                     frmAnimalia.setVisible(true);
                     break;
                 default:

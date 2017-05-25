@@ -21,7 +21,7 @@ import javax.swing.*;
  * @author Jorge Martínez
  * @author Lidia Montero
  */
-public class MascotaEditar extends JFrame {
+public class PadecenEditar extends JFrame {
 
     /**
      * Revisar los campos
@@ -36,7 +36,7 @@ public class MascotaEditar extends JFrame {
     private PadecenDAO padecenDao = new PadecenDAO();
     private Padecen padecen;
 
-    public MascotaEditar(int idcampista, int idenfermedad, JTable padecenTable) {
+    public PadecenEditar(int idcampista, int idenfermedad, JTable padecenTable) {
         
         super("Editar Padecen");
         this.padecenTable = padecenTable;

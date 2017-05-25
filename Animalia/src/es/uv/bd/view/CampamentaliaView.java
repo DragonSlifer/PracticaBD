@@ -18,18 +18,18 @@ import javax.swing.table.JTableHeader;
  * @author Jorge Martínez
  * @author Lidia Montero
  */
-public class AnimaliaView extends JFrame {
+public class CampamentaliaView extends JFrame {
     //private JTable tablePanel;
-    private AnimaliaMenu menu;
+    private CampamentaliaMenu menu;
     private JScrollPane panel;
     private JPanel currentPanel;
    
-    public AnimaliaView() {
+    public CampamentaliaView() {
 
         super("Campamentalia");
         
         // Menu de la aplicación
-        menu = new AnimaliaMenu();
+        menu = new CampamentaliaMenu();
         
         //menu.setMenuActionListener(new MenuActionListener);
         this.setMenuBar(menu);

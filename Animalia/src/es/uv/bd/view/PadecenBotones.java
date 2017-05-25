@@ -16,13 +16,13 @@ import javax.swing.table.DefaultTableModel;
  * @author Jorge Martínez
  * @author Lidia Montero
  */
-public class MascotaBotones extends JPanel {
+public class PadecenBotones extends JPanel {
     private static final JButton[] button = new JButton[3];
     private static final String[] buttonName = { "Nuevo Padecimiento", "Editar Padecimiento", "Borrar Padecimiento" };
     private static final String[] buttonAction = { "insertar", "editar", "borrar" };
     private final JTable padecenTable;
 
-    public MascotaBotones(JTable mascotaTable) {
+    public PadecenBotones(JTable mascotaTable) {
     
         this.padecenTable = mascotaTable;
         MascotaButtonListener mascotaButtonListener = new MascotaButtonListener();
@@ -47,7 +47,7 @@ public class MascotaBotones extends JPanel {
             String key   = event.getActionCommand();
             switch (key) {
                 case "insertar":
-                    MascotaCrear mascotaCrear = new MascotaCrear(padecenTable);
+                    PadecenCrear mascotaCrear = new PadecenCrear(padecenTable);
                     break;
                 case "editar":
                     row = padecenTable.getSelectedRow();
@@ -57,7 +57,7 @@ public class MascotaBotones extends JPanel {
                     else {
                         idCampista = (int)padecenTable.getModel().getValueAt(row, 0);
                         idPatologia = (int)padecenTable.getModel().getValueAt(row, 1);
-                        MascotaEditar mascotaEditar = new MascotaEditar(idCampista, idPatologia, padecenTable);
+                        PadecenEditar mascotaEditar = new PadecenEditar(idCampista, idPatologia, padecenTable);
                     }
                     break;
                 case "borrar":
@@ -69,7 +69,7 @@ public class MascotaBotones extends JPanel {
                     else {
                         idCampista = (int)padecenTable.getModel().getValueAt(row, 0);
                         idPatologia = (int)padecenTable.getModel().getValueAt(row, 1);
-                        MascotaBorrar mascotaBorrar = new MascotaBorrar(idCampista, idPatologia, padecenTable);
+                        PadecenBorrar mascotaBorrar = new PadecenBorrar(idCampista, idPatologia, padecenTable);
                     }
                     break;
                 default:

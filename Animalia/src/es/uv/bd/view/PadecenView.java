@@ -18,14 +18,14 @@ import javax.swing.table.JTableHeader;
  * @author Jorge Martínez
  * @author Lidia Montero
  */
-public class MascotaView extends JFrame {
+public class PadecenView extends JFrame {
 
     private JTable padecenTable;
     private JPanel padecenBotones;
     
     private PadecenDAO padecenDao = new PadecenDAO();
     
-    public MascotaView() {
+    public PadecenView() {
         super("Gestión de Padecimientos");
         
         Container cp = this.getContentPane();
@@ -41,7 +41,7 @@ public class MascotaView extends JFrame {
         JScrollPane jsp = new JScrollPane(padecenTable);
 
         /* Botonera */
-        padecenBotones = new MascotaBotones(padecenTable);
+        padecenBotones = new PadecenBotones(padecenTable);
         
         /* Añadimos todos los paneles al Container */
         cp.add(cabecera, BorderLayout.NORTH);
