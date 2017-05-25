@@ -5,7 +5,7 @@ import java.util.HashMap;
 
 /**
  *
- * @author 
+ * @author Lidia Montero Egidos y Jorge Martinez Hernandez
  */
 public class PatologiasDAO {
 

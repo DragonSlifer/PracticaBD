@@ -8,7 +8,7 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author 
+ * @author Lidia Montero Egidos y Jorge Martinez Hernandez
  */
 public class PadecenDAO {
     /*
@@ -29,24 +29,25 @@ public class PadecenDAO {
      */
 
     private static final String CREATE = 
-            "INSERT INTO padecen () " +
-            "VALUES ()";
+            "INSERT INTO padecen (id_campista,id_patologia,activa,gravedad,ind_especiales) " +
+            "VALUES (?,?,?,?,?)";
     
     private static final String READ = 
-            "SELECT " +
-            "  FROM padecen " +
+            "SELECT * " +
+            " FROM padecen " +
             " WHERE id_campista = ?";
     
     private static final String READALL = 
-            "SELECT " +
-            "  FROM padecen p,  " +
-            " WHERE  " +
-            " ORDER BY";
+            "SELECT pad.id_campista, pad.id_patologia, pat.nombre, pat.descripcion, pat.indicaciones, pat.tratamiento,"
+            + " pad.activa, pad.gravedad, pad.ind_especiales " +
+            " FROM padecen pad, patologias pat " +
+            " WHERE  pad.id_patologia = pat.id_patologia " +
+            " ORDER BY 1";
     
     private static final String UPDATE =
             "UPDATE padecen " +
-            "   SET  " +
-            " WHERE ";
+            " SET  activa = ?, gravedad = ?, ind_especiales = ? " +
+            " WHERE id_campista = ?, id_patologia = ?";
     
     private static final String DELETE =
             "DELETE FROM padecen " +
