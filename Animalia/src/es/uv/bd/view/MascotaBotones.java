@@ -18,13 +18,13 @@ import javax.swing.table.DefaultTableModel;
  */
 public class MascotaBotones extends JPanel {
     private static final JButton[] button = new JButton[3];
-    private static final String[] buttonName = { "Nueva Mascota", "Editar Mascota", "Borrar Mascota" };
+    private static final String[] buttonName = { "Nuevo Padecimiento", "Editar Padecimiento", "Borrar Padecimiento" };
     private static final String[] buttonAction = { "insertar", "editar", "borrar" };
-    private final JTable mascotaTable;
+    private final JTable padecenTable;
 
     public MascotaBotones(JTable mascotaTable) {
     
-        this.mascotaTable = mascotaTable;
+        this.padecenTable = mascotaTable;
         MascotaButtonListener mascotaButtonListener = new MascotaButtonListener();
         setLayout(new GridLayout(1,3));
         
@@ -41,33 +41,35 @@ public class MascotaBotones extends JPanel {
         @Override
         public void actionPerformed(ActionEvent event) {
             
-            int row, idMascota;
+            int row, idCampista, idPatologia;
             PadecenDAO mascotaDao = new PadecenDAO();
             
             String key   = event.getActionCommand();
             switch (key) {
                 case "insertar":
-                    MascotaCrear mascotaCrear = new MascotaCrear(mascotaTable);
+                    MascotaCrear mascotaCrear = new MascotaCrear(padecenTable);
                     break;
                 case "editar":
-                    row = mascotaTable.getSelectedRow();
+                    row = padecenTable.getSelectedRow();
                     if (row == -1) {
                         showSelectionMessage();
                     }
                     else {
-                        idMascota = (int)mascotaTable.getModel().getValueAt(row, 0);
-                        MascotaEditar mascotaEditar = new MascotaEditar(idMascota, mascotaTable);
+                        idCampista = (int)padecenTable.getModel().getValueAt(row, 0);
+                        idPatologia = (int)padecenTable.getModel().getValueAt(row, 1);
+                        MascotaEditar mascotaEditar = new MascotaEditar(idCampista, idPatologia, padecenTable);
                     }
                     break;
                 case "borrar":
                     // Fila seleccionada
-                    row = mascotaTable.getSelectedRow();
+                    row = padecenTable.getSelectedRow();
                     if (row == -1) {
                         showSelectionMessage();
                     }
                     else {
-                        idMascota = (int)mascotaTable.getModel().getValueAt(row, 0);
-                        MascotaBorrar mascotaBorrar = new MascotaBorrar(idMascota, mascotaTable);
+                        idCampista = (int)padecenTable.getModel().getValueAt(row, 0);
+                        idPatologia = (int)padecenTable.getModel().getValueAt(row, 1);
+                        MascotaBorrar mascotaBorrar = new MascotaBorrar(idCampista, idPatologia, padecenTable);
                     }
                     break;
                 default:
@@ -97,28 +99,27 @@ public class MascotaBotones extends JPanel {
             }
             else {
                 // Clave primaria de la fila seleccionada
-                int idMascota = (int)mascotaTable.getModel().getValueAt(row, 0);
-                String nombreMascota = (String)mascotaTable.getModel().getValueAt(row, 1);
+                int idCampista = (int)padecenTable.getModel().getValueAt(row, 0);
+                int idPatologia = (int)padecenTable.getModel().getValueAt(row, 1);
             
                 // Dialogo de confirmación
-                int reply = JOptionPane.showConfirmDialog(
-                    null,
-                    "¿Borrar la mascota '" + nombreMascota + "' (idMascota = " + idMascota + ")?",
+                int reply = JOptionPane.showConfirmDialog(null,
+                    "¿Borrar la relación (idPatologia = '" + idPatologia + "' idCampista = " + idCampista + ")?",
                     "Borrar Mascota",
                     JOptionPane.YES_NO_OPTION);
                 if (reply == JOptionPane.YES_OPTION) {
                     try {
                         // Borramos la mascota de la base de datos
-                        mascotaDao.borrarMascota(idMascota);
+                        mascotaDao.borrarPadecen(idCampista,idPatologia);
                         // y actualizamos la tabla
-                        DefaultTableModel mascotaModel = (DefaultTableModel)mascotaTable.getModel();
+                        DefaultTableModel mascotaModel = (DefaultTableModel)padecenTable.getModel();
                         mascotaModel.removeRow(row);
-                        mascotaTable.updateUI();
+                        padecenTable.updateUI();
                     }
                     catch (ClassNotFoundException | InstantiationException | IllegalAccessException | SQLException e) {
                         JOptionPane.showMessageDialog(
                             null,
-                            "Error borrando mascota: " + e.getMessage(),
+                            "Error borrando padecen: " + e.getMessage(),
                             "Atención",
                             JOptionPane.ERROR_MESSAGE);
                     }
