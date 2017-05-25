@@ -17,35 +17,35 @@ import javax.swing.JTable;
  */
 public class MascotaBorrar {
     
-    public MascotaBorrar(int idMascota, JTable mascotaTable) {
+    public MascotaBorrar(int idcampista,int idenfermedad, JTable padecenTable) {
     
-        PadecenDAO mascotaDao = new PadecenDAO();
-        Padecen mascota;
+        PadecenDAO padecenDao = new PadecenDAO();
+        Padecen padecen;
 
         try {
             // Recuperamos la mascota a través de la clave primaria
-            mascota = mascotaDao.leerMascota(idMascota);
+            padecen = padecenDao.leerPadecen(idcampista,idenfermedad);
         
             // Dialogo de confirmación
             int reply = JOptionPane.showConfirmDialog(
                 null,
-                "¿Borrar la mascota '" + mascota.getNombreMascota() + "' (idMascota = " + idMascota + ")?",
-                "Borrar Mascota",
+                "¿Borrar la fila '" + padecen.toString() + "' (idcampista = " + idcampista + ", idenfermedad " + idenfermedad +")?",
+                "Borrar Padecen",
                 JOptionPane.YES_NO_OPTION);
 
             if (reply == JOptionPane.YES_OPTION) {
                     // Borramos la mascota de la base de datos
-                    mascotaDao.borrarMascota(idMascota);
+                    padecenDao.borrarPadecen(idcampista,idenfermedad);
                     /*
                     * Actualizamos el modelo
                     */
-                    mascotaTable.setModel(mascotaDao.getTablaMascotas());
-                    mascotaTable.updateUI();
+                    padecenTable.setModel(padecenDao.getTablaPadecen());
+                    padecenTable.updateUI();
                 }
         } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | SQLException | ParseException e) {
             JOptionPane.showMessageDialog(
                 null,
-                "Error borrando mascota: " + e.getMessage(),
+                "Error borrando padecen: " + e.getMessage(),
                 "Atención",
                 JOptionPane.ERROR_MESSAGE);
         }
