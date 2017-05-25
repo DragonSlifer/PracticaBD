@@ -11,7 +11,8 @@ import java.util.logging.Logger;
 
 /**
  *
- * @author 
+ * @author Jorge Martínez
+ * @author Lidia Montero
  */
 public class PadecenDaoTest {
     private static String modulo = "PadecenDaoTest::";

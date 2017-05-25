@@ -5,7 +5,8 @@ import java.awt.event.ActionListener;
 
 /**
  *
- * @author diaz
+ * @author Jorge Martínez
+ * @author Lidia Montero
  */
 public class AnimaliaMenu extends MenuBar {
     private Menu file, tablas, explorer;

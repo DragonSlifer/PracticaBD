@@ -15,7 +15,8 @@ import javax.swing.table.JTableHeader;
 
 /**
  *
- * @author diaz
+ * @author Jorge Martínez
+ * @author Lidia Montero
  */
 public class AnimaliaView extends JFrame {
     //private JTable tablePanel;
