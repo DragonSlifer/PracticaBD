@@ -23,28 +23,29 @@ import javax.swing.*;
  */
 public class MascotaEditar extends JFrame {
 
-    private JTextField idMascota = new JTextField();
-    private JTextField idCliente = new JTextField();
-    private JTextField nombreMascota = new JTextField();
-    private JTextField tipoAnimal = new JTextField();
-    private JComboBox dia = new JComboBox();
-    private JComboBox mes = new JComboBox();
-    private JComboBox anyo = new JComboBox();
+    /**
+     * Revisar los campos
+     */
+    private JTextField idCampista = new JTextField();
+    private JTextField idEnfermedad = new JTextField();
+    private JTextField nombrePatologia = new JTextField();
+    private JComboBox activa = new JComboBox();
+   
     
-    private JTable mascotaTable;
+    private JTable padecenTable;
     private PadecenDAO mascotaDao = new PadecenDAO();
     private Padecen mascota;
 
-    public MascotaEditar(int idMascota, JTable mascotaTable) {
+    public MascotaEditar(int idcampista, int idenfermedad, JTable padecenTable) {
         
-        super("Editar Mascota");
-        this.mascotaTable = mascotaTable;
+        super("Editar Padecen");
+        this.padecenTable = padecenTable;
         
         try {
             /*
              * Obtenemos el objeto a editar
              */
-            mascota = mascotaDao.leerMascota(idMascota);
+            mascota = mascotaDao.leerPadecen(idcampista, idenfermedad);
             
             Container cp = this.getContentPane();
             cp.setLayout(new BorderLayout());
@@ -69,7 +70,7 @@ public class MascotaEditar extends JFrame {
         } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | SQLException | ParseException e) {
             JOptionPane.showMessageDialog(
                 null,
-                "Error modificiando mascota: " + e.getMessage(),
+                "Error modificiando padecen: " + e.getMessage(),
                 "Atención",
                 JOptionPane.ERROR_MESSAGE);
         }
@@ -77,7 +78,7 @@ public class MascotaEditar extends JFrame {
    
     private JPanel createCabecera() {
         JPanel c = new JPanel();
-        JLabel l = new JLabel("Editar mascota");
+        JLabel l = new JLabel("Editar padecen");
         l.setForeground(Color.BLUE);
         l.setHorizontalAlignment(JLabel.CENTER);
         l.setFont(new Font("Arial",Font.BOLD | Font.ITALIC,22));
@@ -97,48 +98,40 @@ public class MascotaEditar extends JFrame {
         form.setLayout(new GridLayout(5,2));
         
         
-        idMascota.setFont(textfFont);
-        idMascota.setColumns(4);
-        idMascota.setText((mascota.getIdMascota()+""));
-        idMascota.setEditable(false);
-        idMascota.setEnabled(true);
+        idCampista.setFont(textfFont);
+        idCampista.setColumns(4);
+        idCampista.setText((mascota.getId_campista()+""));
+        idCampista.setEditable(false);
+        idCampista.setEnabled(true);
         
-        idCliente.setFont(textfFont);
-        idCliente.setColumns(4);
-        idCliente.setText((mascota.getIdCliente()+""));
+        idEnfermedad.setFont(textfFont);
+        idEnfermedad.setColumns(4);
+        idEnfermedad.setText((mascota.getId_patologia()+""));
+        idEnfermedad.setEditable(false);
+        idEnfermedad.setEnabled(true);
         
-        nombreMascota.setFont(textfFont);
-        nombreMascota.setColumns(30);
-        nombreMascota.setText((mascota.getNombreMascota()));
-        
-        tipoAnimal.setFont(textfFont);
-        tipoAnimal.setColumns(4);
-        tipoAnimal.setText((mascota.getTipoAnimal()+""));
+        nombrePatologia.setFont(textfFont);
+        nombrePatologia.setColumns(30);
+        nombrePatologia.setText((mascota.getNombrePatologia()));
         
         JLabel idMascotaLabel = new JLabel("Id de la mascota:");
         idMascotaLabel.setFont(labelFont);
         idMascotaLabel.setHorizontalAlignment(JLabel.RIGHT);
         form.add(idMascotaLabel);
-        form.add(idMascota);
+        form.add(idCampista);
         
         JLabel idClienteLabel = new JLabel("Id del dueño:");
         idClienteLabel.setFont(labelFont);
         idClienteLabel.setHorizontalAlignment(JLabel.RIGHT);
         form.add(idClienteLabel);
-        idCliente.setColumns(4);
-        form.add(idCliente);
+        idEnfermedad.setColumns(4);
+        form.add(idEnfermedad);
 
         JLabel nombreMascotaLabel = new JLabel("Nombre de la mascota:");
         nombreMascotaLabel.setFont(labelFont);
         nombreMascotaLabel.setHorizontalAlignment(JLabel.RIGHT);
         form.add(nombreMascotaLabel);
-        form.add(nombreMascota);
-
-        JLabel tipoAnimalLabel = new JLabel("Tipo de animal:");
-        tipoAnimalLabel.setFont(labelFont);
-        tipoAnimalLabel.setHorizontalAlignment(JLabel.RIGHT);
-        form.add(tipoAnimalLabel);
-        form.add(tipoAnimal);
+        form.add(nombrePatologia);
 
         JLabel fechaNacimientoLabel = new JLabel("Fecha de nacimiento:");
         fechaNacimientoLabel.setFont(labelFont);
@@ -149,26 +142,17 @@ public class MascotaEditar extends JFrame {
         JPanel fechaPanel = new JPanel();
         fechaPanel.setLayout(new FlowLayout());
         
-        dia.setModel(new DefaultComboBoxModel(new String[] {"01","02","03","04","05","06","07","08","09","10",
-                "11","12","13","14","15","16","17","18","19","20",
-                "21","22","23","24","25","26","27","28","29","30","31"}));
-        dia.setSelectedItem(formDia.format(mascota.getFechaNacimiento()));
-        
-        mes.setModel(new DefaultComboBoxModel(new String[] {"01","02","03","04","05","06","07","08","09","10",
-            "11","12"}));
-        mes.setSelectedItem(formMes.format(mascota.getFechaNacimiento()));
-        
-        anyo.setModel(new DefaultComboBoxModel(new String[] {"1990","1991","1992","1993","1994","1995","1996",
-            "1997","1998","1999","2000","2001","2002","2003","2004","2005","2006","2007","2008","2009","2010",
-                "2011","2012"}));
-        anyo.setSelectedItem(formAny.format(mascota.getFechaNacimiento()));
-        
-       
-        fechaPanel.add(dia);
+        activa.setModel(new DefaultComboBoxModel(new String[] {"activa", "inactiva"}));
+        String actividad;
+        if(mascota.isActiva()){
+            actividad = "activa";
+        } else {
+            actividad = "false";
+        }
+        activa.setSelectedItem(formDia.format(actividad));
+             
+        fechaPanel.add(activa);
         fechaPanel.add(new JLabel("-"));
-        fechaPanel.add(mes);
-        fechaPanel.add(new JLabel("-"));
-        fechaPanel.add(anyo);
         
         form.add(fechaPanel);
 
@@ -195,8 +179,8 @@ public class MascotaEditar extends JFrame {
                     case "botonMascota":
                         SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
                         Padecen mascota = new Padecen();
-                        mascota.setIdMascota(Integer.parseInt(idMascota.getText()));
-                        mascota.setIdCliente(Integer.parseInt(idCliente.getText()));
+                        mascota.setIdMascota(Integer.parseInt(idCampista.getText()));
+                        mascota.setIdCliente(Integer.parseInt(idEnfermedad.getText()));
                         mascota.setNombreMascota(nombreMascota.getText());
                         mascota.setTipoAnimal(Integer.parseInt(tipoAnimal.getText()));
                         String f = (String)dia.getSelectedItem() + "-" + 
@@ -209,8 +193,8 @@ public class MascotaEditar extends JFrame {
                         /*
                          * Actualizamos el modelo
                          */
-                        mascotaTable.setModel(mascotaDao.getTablaMascotas());
-                        mascotaTable.updateUI();
+                        padecenTable.setModel(mascotaDao.getTablaMascotas());
+                        padecenTable.updateUI();
                         /*
                          * Cerramos la ventana
                          */
