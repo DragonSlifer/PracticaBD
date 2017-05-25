@@ -57,7 +57,7 @@ public class PadecenBotones extends JPanel {
                     else {
                         idCampista = (int)padecenTable.getModel().getValueAt(row, 0);
                         idPatologia = (int)padecenTable.getModel().getValueAt(row, 1);
-                        PadecenEditar mascotaEditar = new PadecenEditar(idCampista, idPatologia, padecenTable);
+                        PadecenEditar padecenEditar = new PadecenEditar(idCampista, idPatologia, padecenTable);
                     }
                     break;
                 case "borrar":
@@ -69,7 +69,7 @@ public class PadecenBotones extends JPanel {
                     else {
                         idCampista = (int)padecenTable.getModel().getValueAt(row, 0);
                         idPatologia = (int)padecenTable.getModel().getValueAt(row, 1);
-                        PadecenBorrar mascotaBorrar = new PadecenBorrar(idCampista, idPatologia, padecenTable);
+                        PadecenBorrar padecenBorrar = new PadecenBorrar(idCampista, idPatologia, padecenTable);
                     }
                     break;
                 default:
@@ -86,8 +86,8 @@ public class PadecenBotones extends JPanel {
                     JOptionPane.INFORMATION_MESSAGE);
         }
         
-        private void mascotaBorrar(int row) {                        
-            PadecenDAO mascotaDao = new PadecenDAO();
+        private void padecenBorrar(int row) {                        
+            PadecenDAO padecenDao = new PadecenDAO();
         
             // No hay ninguna fila seleccionada
             if (row == -1) {
@@ -105,12 +105,12 @@ public class PadecenBotones extends JPanel {
                 // Dialogo de confirmación
                 int reply = JOptionPane.showConfirmDialog(null,
                     "¿Borrar la relación (idPatologia = '" + idPatologia + "' idCampista = " + idCampista + ")?",
-                    "Borrar Mascota",
+                    "Borrar Padecen",
                     JOptionPane.YES_NO_OPTION);
                 if (reply == JOptionPane.YES_OPTION) {
                     try {
                         // Borramos la mascota de la base de datos
-                        mascotaDao.borrarPadecen(idCampista,idPatologia);
+                        padecenDao.borrarPadecen(idCampista,idPatologia);
                         // y actualizamos la tabla
                         DefaultTableModel mascotaModel = (DefaultTableModel)padecenTable.getModel();
                         mascotaModel.removeRow(row);

@@ -156,7 +156,7 @@ public class FrmCampamentalia extends javax.swing.JFrame {
             this.jtQuery.setModel(modelo);
             //Para conectarnos a nuestra base de datos
             DriverManager.registerDriver(new oracle.jdbc.OracleDriver());
-            Connection conexion = DriverManager.getConnection("jdbc:oracle:thin:@pokemon2.uv.es:1521:ORCL", "", "");
+            Connection conexion = DriverManager.getConnection("jdbc:oracle:thin:@pokemon2.uv.es:1521:ORCL", "AL028", "OneManArmy");
             //Para ejecutar la consulta
             Statement s = conexion.createStatement();
             //Ejecutamos la consulta que escribimos en la caja de texto

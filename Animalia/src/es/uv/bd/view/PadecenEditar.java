@@ -114,23 +114,23 @@ public class PadecenEditar extends JFrame {
         nombrePatologia.setColumns(30);
         nombrePatologia.setText((padecen.getNombrePatologia()));
         
-        JLabel idMascotaLabel = new JLabel("Id del campista:");
-        idMascotaLabel.setFont(labelFont);
-        idMascotaLabel.setHorizontalAlignment(JLabel.RIGHT);
-        form.add(idMascotaLabel);
+        JLabel idCampistaLabel = new JLabel("Id del campista:");
+        idCampistaLabel.setFont(labelFont);
+        idCampistaLabel.setHorizontalAlignment(JLabel.RIGHT);
+        form.add(idCampistaLabel);
         form.add(idCampista);
         
-        JLabel idClienteLabel = new JLabel("Id de la patologia:");
-        idClienteLabel.setFont(labelFont);
-        idClienteLabel.setHorizontalAlignment(JLabel.RIGHT);
-        form.add(idClienteLabel);
+        JLabel idPatologiaLabel = new JLabel("Id de la patologia:");
+        idPatologiaLabel.setFont(labelFont);
+        idPatologiaLabel.setHorizontalAlignment(JLabel.RIGHT);
+        form.add(idPatologiaLabel);
         idEnfermedad.setColumns(4);
         form.add(idEnfermedad);
 
-        JLabel nombreMascotaLabel = new JLabel("Nombre de la patologia:");
-        nombreMascotaLabel.setFont(labelFont);
-        nombreMascotaLabel.setHorizontalAlignment(JLabel.RIGHT);
-        form.add(nombreMascotaLabel);
+        JLabel nombrePatologia = new JLabel("Nombre de la patologia:");
+        nombrePatologia.setFont(labelFont);
+        nombrePatologia.setHorizontalAlignment(JLabel.RIGHT);
+        form.add(nombrePatologia);
         form.add(nombrePatologia);
 
         JPanel fechaPanel = new JPanel();
@@ -158,7 +158,7 @@ public class PadecenEditar extends JFrame {
         JPanel botonPanel = new JPanel();
         
         JButton boton = new JButton("Modificar");
-        boton.setActionCommand("botonMascota");
+        boton.setActionCommand("botonPadecen");
         boton.addActionListener(new ButtonListener());
         botonPanel.add(boton);
         return botonPanel;
@@ -170,7 +170,7 @@ public class PadecenEditar extends JFrame {
             try {
                 String key = event.getActionCommand();
                 switch (key) {
-                    case "botonMascota":
+                    case "botonPadecen":
                         SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
                         Padecen mascota = new Padecen();
                         mascota.setId_campista(Integer.parseInt(idCampista.getText()));
@@ -202,7 +202,7 @@ public class PadecenEditar extends JFrame {
             catch (ClassNotFoundException | InstantiationException | IllegalAccessException | SQLException e) {
                 JOptionPane.showMessageDialog(
                 null,
-                "Error modificiando mascota: " + e.getMessage(),
+                "Error modificiando padecen: " + e.getMessage(),
                 "Atención",
                 JOptionPane.ERROR_MESSAGE);
             }

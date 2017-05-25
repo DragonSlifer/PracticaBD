@@ -25,15 +25,15 @@ public class PadecenCrear extends JFrame {
     private JComboBox activa = new JComboBox();
     private JTextField ind_especiales = new JTextField();
     
-    private JTable mascotaTable;
+    private JTable padecenTable;
     private HashMap<String, Integer> listaPatologias = new HashMap();
     private Object [] claves;
         
-    public PadecenCrear(JTable mascotaTable) {
+    public PadecenCrear(JTable padecenTable) {
             
         super("Nuevo Padecen");
         
-        this.mascotaTable = mascotaTable;
+        this.padecenTable = padecenTable;
         
         Container cp = this.getContentPane();
         cp.setLayout(new BorderLayout());
@@ -105,16 +105,16 @@ public class PadecenCrear extends JFrame {
             
             form.add(idPatologia);
 
-            JLabel nombreMascotaLabel = new JLabel("Gravedad:");
-            nombreMascotaLabel.setFont(labelFont);
-            nombreMascotaLabel.setHorizontalAlignment(JLabel.RIGHT);
-            form.add(nombreMascotaLabel);
+            JLabel gravedadLabel = new JLabel("Gravedad:");
+            gravedadLabel.setFont(labelFont);
+            gravedadLabel.setHorizontalAlignment(JLabel.RIGHT);
+            form.add(gravedadLabel);
             form.add(gravedad);
 
-            JLabel tipoAnimalLabel = new JLabel("Activa:");
-            tipoAnimalLabel.setFont(labelFont);
-            tipoAnimalLabel.setHorizontalAlignment(JLabel.RIGHT);
-            form.add(tipoAnimalLabel);
+            JLabel activaLabel = new JLabel("Activa:");
+            activaLabel.setFont(labelFont);
+            activaLabel.setHorizontalAlignment(JLabel.RIGHT);
+            form.add(activaLabel);
             form.add(activa);
             
             JPanel fechaPanel = new JPanel();
@@ -170,8 +170,8 @@ public class PadecenCrear extends JFrame {
                         /*
                          * Actualizamos el modelo
                          */
-                        mascotaTable.setModel(mascotaDao.getTablaPadecen());
-                        mascotaTable.updateUI();
+                        padecenTable.setModel(mascotaDao.getTablaPadecen());
+                        padecenTable.updateUI();
                          /*
                          * Cerramos la ventana
                          */
