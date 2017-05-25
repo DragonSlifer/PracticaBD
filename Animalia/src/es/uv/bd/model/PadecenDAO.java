@@ -35,7 +35,7 @@ public class PadecenDAO {
     private static final String READ = 
             "SELECT * " +
             " FROM padecen " +
-            " WHERE id_campista = ?, id_enfermedad = ?";
+            " WHERE id_campista = ? AND id_patologia = ?";
     
     private static final String READALL = 
             "SELECT pad.id_campista, pad.id_patologia, pat.nombre, pat.descripción, pat.indicaciones, pat.tratamiento,"
@@ -69,6 +69,11 @@ public class PadecenDAO {
         // Sentencia de insert
         PreparedStatement insert = oracleConn.prepareStatement(CREATE);
         ///< Rellenar
+        insert.setInt(1,padecen.getId_campista());
+        insert.setInt(2,padecen.getId_patologia());
+        insert.setString(3, padecen.getActiva());
+        insert.setString(4, padecen.getGravedad());
+        insert.setString(5, padecen.getInd_especiales());
         insert.executeUpdate();
         
         oracleConn.commit();
@@ -89,8 +94,14 @@ public class PadecenDAO {
         read.setInt(1, id_campista);
         read.setInt(2, id_enfermedad);
         ResultSet rs = read.executeQuery();
-        
-        padecen = new Padecen(rs.getInt("id_campista"),rs.getInt("id_patologia"),rs.getBoolean("activa"),rs.getString("gravedad"),rs.getString("ind_especiales"));
+        rs.next();
+        Boolean activa;
+        if("activa".equals(rs.getString("activa"))){
+            activa = true;
+        } else {
+           activa = false;
+        }
+        padecen = new Padecen(rs.getInt("id_campista"),rs.getInt("id_patologia"),activa,rs.getString("gravedad"),rs.getString("ind_especiales"));
         
         return padecen;
     }
@@ -108,8 +119,8 @@ public class PadecenDAO {
         oracleConn.setAutoCommit(false);
         // Sentencia de insert
         PreparedStatement update = oracleConn.prepareStatement(UPDATE);
+        update
         
-       
         update.executeUpdate();
         
         oracleConn.commit();
