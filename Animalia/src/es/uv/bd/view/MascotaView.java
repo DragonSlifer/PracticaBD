@@ -15,14 +15,15 @@ import javax.swing.table.JTableHeader;
     
 /**
  *
- * @author diaz
+ * @author Jorge Martínez
+ * @author Lidia Montero
  */
 public class MascotaView extends JFrame {
 
-    private JTable mascotaTable;
-    private JPanel mascotaBotones;
+    private JTable padecenTable;
+    private JPanel padecenBotones;
     
-    private PadecenDAO mascotaDao = new PadecenDAO();
+    private PadecenDAO padecenDao = new PadecenDAO();
     
     public MascotaView() {
         super("Gestión de Mascotas");
@@ -34,18 +35,18 @@ public class MascotaView extends JFrame {
         JPanel cabecera = createCabecera();
   
         /* Tabla */
-        mascotaTable = createTablePanel();
-        mascotaTable.setModel(mascotaDao.getTablaMascotas());
+        padecenTable = createTablePanel();
+        padecenTable.setModel(padecenDao.getTablaPadecen());
         // Ponemos la tabla dentro de un JScrollPane
-        JScrollPane jsp = new JScrollPane(mascotaTable);
+        JScrollPane jsp = new JScrollPane(padecenTable);
 
         /* Botonera */
-        mascotaBotones = new MascotaBotones(mascotaTable);
+        padecenBotones = new MascotaBotones(padecenTable);
         
         /* Añadimos todos los paneles al Container */
         cp.add(cabecera, BorderLayout.NORTH);
         cp.add(jsp, BorderLayout.CENTER);
-        cp.add(mascotaBotones, BorderLayout.SOUTH);
+        cp.add(padecenBotones, BorderLayout.SOUTH);
         
         setSize(800,400);
         setVisible(true);
