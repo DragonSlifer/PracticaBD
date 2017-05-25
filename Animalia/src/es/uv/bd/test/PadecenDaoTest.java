@@ -39,7 +39,7 @@ public class PadecenDaoTest {
         try {
             print("Test 1: Crear patologia");            
             ///< int id_campista, int id_patologia, boolean activa, String gravedad, String ind_especiales
-            p1 = new Padecen(1,3,true,"ninguna",null);
+            p1 = new Padecen(1,2,true,"ninguna",null);
             padecenDAO.crearPadecen(p1);
             print("Test 1: " + p1 + " creada.");
             

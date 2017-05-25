@@ -47,11 +47,11 @@ public class PadecenDAO {
     private static final String UPDATE =
             "UPDATE padecen " +
             " SET  activa = ?, gravedad = ?, ind_especiales = ? " +
-            " WHERE id_campista = ?, id_patologia = ?";
+            " WHERE id_campista = ? AND id_patologia = ?";
     
     private static final String DELETE =
             "DELETE FROM padecen " +
-            " WHERE id_campista = ? AND id_enfermedad = ?";
+            " WHERE id_campista = ? AND id_patologia = ?";
 
     public PadecenDAO() {}
     
@@ -119,7 +119,11 @@ public class PadecenDAO {
         oracleConn.setAutoCommit(false);
         // Sentencia de insert
         PreparedStatement update = oracleConn.prepareStatement(UPDATE);
-        update
+        update.setString(1,padecen.getActiva());
+        update.setString(2,padecen.getGravedad());
+        update.setString(3, padecen.getInd_especiales());
+        update.setInt(4,padecen.getId_campista());
+        update.setInt(5,padecen.getId_patologia());
         
         update.executeUpdate();
         
@@ -141,6 +145,7 @@ public class PadecenDAO {
         // Sentencia de borrado
         PreparedStatement delete = oracleConn.prepareStatement(DELETE);
         delete.setInt(1, id_campista);
+        delete.setInt(2, id_enfermedad);
         delete.executeUpdate();
         
         oracleConn.commit();
