@@ -26,7 +26,7 @@ public class MascotaView extends JFrame {
     private PadecenDAO padecenDao = new PadecenDAO();
     
     public MascotaView() {
-        super("Gestión de Mascotas");
+        super("Gestión de Padecimientos");
         
         Container cp = this.getContentPane();
         cp.setLayout(new BorderLayout());
@@ -54,7 +54,7 @@ public class MascotaView extends JFrame {
    
     private JPanel createCabecera() {
         JPanel c = new JPanel();
-        JLabel l = new JLabel("Lista de Mascotas");
+        JLabel l = new JLabel("Lista de Padecimientos");
         l.setForeground(Color.RED);
         l.setHorizontalAlignment(JLabel.CENTER);
         l.setFont(new Font("Arial",Font.BOLD | Font.ITALIC,24));

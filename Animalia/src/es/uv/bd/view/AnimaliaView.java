@@ -26,7 +26,7 @@ public class AnimaliaView extends JFrame {
    
     public AnimaliaView() {
 
-        super("Animalia");
+        super("Campamentalia");
         
         // Menu de la aplicación
         menu = new AnimaliaMenu();

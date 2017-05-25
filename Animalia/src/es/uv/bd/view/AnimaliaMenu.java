@@ -16,8 +16,8 @@ public class AnimaliaMenu extends MenuBar {
     private String [] fileItemAction = { "menuExportar", "menuExit" };
     
     private MenuItem [] tablaItem = new MenuItem[1];
-    private String [] tablaItemName = { "Mascotas" };
-    private String [] tablaItemAction = { "menuMascotas" };
+    private String [] tablaItemName = { "Padecimiento" };
+    private String [] tablaItemAction = { "menuPadecimientos" };
     
     private MenuItem [] explorerItem = new MenuItem[1];
     private String [] explorerItemName = { "Explorador de tablas" };

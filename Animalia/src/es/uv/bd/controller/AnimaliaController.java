@@ -35,7 +35,7 @@ public class AnimaliaController {
                 case "menuExit":
                     System.exit(0);
                     break;
-                case "menuMascotas":
+                case "menuPadecimientos":
                     Frame mascotaView = new MascotaView();
                     mascotaView.setVisible(true);
                     break;
